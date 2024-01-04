@@ -1,6 +1,7 @@
 ﻿using System;
 using GTA;
 using LemonUI;
+using LemonUI.Menus;
 
 namespace ViRe;
 
@@ -13,6 +14,9 @@ public class ViRe : Script
 
     private ObjectPool pool = new ObjectPool();
     private Configuration config = Configuration.Load();
+    private NativeMenu menuRegister = new NativeMenu("", "Register", "Register to work in ViRe.");
+    private NativeMenu menuServices = new NativeMenu("", "Available", "The services you can provide in your area.");
+    private NativeMenu menuCurrent = new NativeMenu("", "Current", "Manages your current service.");
     
     #endregion
     
@@ -20,6 +24,10 @@ public class ViRe : Script
 
     public ViRe()
     {
+        pool.Add(menuRegister);
+        pool.Add(menuServices);
+        pool.Add(menuCurrent);
+        
         Tick += OnTick;
     }
     
